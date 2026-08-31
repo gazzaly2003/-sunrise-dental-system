@@ -9,14 +9,26 @@ public class IdGeneratorFactory {
     }
 
     public static String generate(IdType type) {
-        String raw = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+
+        if (type == null) {
+            throw new IllegalArgumentException("ID type is required");
+        }
+
+        String raw = UUID.randomUUID()
+                .toString()
+                .substring(0, 8)
+                .toUpperCase();
+
         switch (type) {
             case BILL:
                 return "B" + raw;
+
             case APPOINTMENT:
                 return "A" + raw;
+
             default:
-                throw new IllegalArgumentException("Unknown ID type: " + type);
+                throw new IllegalArgumentException(
+                        "Unknown ID type: " + type);
         }
     }
 }
