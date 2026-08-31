@@ -4,10 +4,11 @@ import com.sunrise.dental.dao.BillDAO;
 import com.sunrise.dental.model.Appointment;
 import com.sunrise.dental.model.Bill;
 
-import java.util.UUID;
-
 public class BillService {
     private final BillDAO billDAO = new BillDAO();
+
+    public BillService() {
+    }
 
     public Bill generateBill(Appointment appt, String paymentMethod) {
         if (appt == null) {
