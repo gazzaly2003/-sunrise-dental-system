@@ -5,9 +5,16 @@ import com.sunrise.dental.model.Appointment;
 import com.sunrise.dental.model.Bill;
 
 public class BillService {
-    private final BillDAO billDAO = new BillDAO();
+    private final BillDAO billDAO;
 
+    // Default constructor for the actual application
     public BillService() {
+        this.billDAO = new BillDAO();
+    }
+
+    // Constructor for unit testing
+    public BillService(BillDAO billDAO) {
+        this.billDAO = billDAO;
     }
 
     public Bill generateBill(Appointment appt, String paymentMethod) {
